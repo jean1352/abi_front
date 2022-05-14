@@ -1,0 +1,858 @@
+{
+	"info": {
+		"_postman_id": "1cb3a5f6-ab21-4ac1-a979-a1503bb487ea",
+		"name": "ABi Proveedores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"followAuthorizationHeader": true,
+				"strictSSL": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "producto",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/home/jorge/Pictures/144028831 (copy 1).jpg",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_path}}/producto/?page=1&page_size=20",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Producto",
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api_path}}/producto/18/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"18",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n          \"categoria\": 3,\n          \"nombre\": \"asd\",\n          \"descripcion\": \"asd\",\n          \"descripcion_extensa\": \"wer\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/producto/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guardar producto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n          \"fabricante\": 27,\n          \"categoria\": 3,\n          \"nombre\": \"nombre cambiado\",\n          \"descripcion\": \"asd\",\n          \"descripcion_extensa\": \"<p>asdads</p>\\n\",\n          \"etiquetas\": \"asd,dsa\",\n          \"cantidad_mayorista\": 12,\n          \"precio\": 999,\n          \"precio_mayorista\": 998,\n          \"cantidad_disponible\": 200\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/producto/19/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"19",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/producto/15/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"15",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subir imagen producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "producto",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/home/jorge/Pictures/large-2.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_path}}/imagen_producto/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"imagen_producto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver detalles imagen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/imagen_producto/84",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"imagen_producto",
+						"84"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar imagen de producto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "producto",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/home/jorge/Pictures/144028831 (copy 1).jpg"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/imagen_producto/81/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"imagen_producto",
+						"81",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar imagen de producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/imagen_producto/83/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"imagen_producto",
+						"83",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elegir imagen como portada",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"imagen_id\" : 80 \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/productos-imagen-portada/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"productos-imagen-portada",
+						""
+					],
+					"query": [
+						{
+							"key": "imagen_idimagen_id",
+							"value": "84",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/categoria/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"categoria",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ciudad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/ciudad/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"ciudad",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get tipos de vehiculo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/tipo-vehiculo/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"tipo-vehiculo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get puntos de retiro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/punto-retiro/?fabricante=27",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"punto-retiro",
+						""
+					],
+					"query": [
+						{
+							"key": "fabricante",
+							"value": "27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get punto de retiro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/punto-retiro/9/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"punto-retiro",
+						"9",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear punto de retiro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n            \"fabricante\": 27,\n            \"nombre\": \"Casa particular\",\n            \"calle_principal\": \"Artigas\",\n            \"calle_secundaria\": \"España\",\n            \"numero\": \"2048\",\n            \"referencia\": \"adsasd\",\n            \"ubicacion\": \"-45.314545907447055,-17.61473816451526\",\n            \"default\": false,\n            \"ciudad\": 11\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/punto-retiro/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"punto-retiro",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guardar punto de retiro",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"fabricante\": 50,\n        \"nombre\": \"Sucursal 3r\",\n        \"calle_principal\": \"Calle 1\",\n        \"calle_secundaria\": \"Calle 2\",\n        \"numero\": \"123\",\n        \"referencia\": \"a\",\n        \"ubicacion\": \"-25.23165284078297,-57.48939514160157\",\n        \"default\": false,\n        \"ciudad\": 12\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/punto-retiro/28/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"punto-retiro",
+						"28",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar punto de retiro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n            \"fabricante\": 27,\n            \"nombre\": \"Casa particular\",\n            \"calle_principal\": \"Artigas\",\n            \"calle_secundaria\": \"España\",\n            \"numero\": \"2048\",\n            \"referencia\": \"adsasd\",\n            \"ubicacion\": \"-45.314545907447055,-17.61473816451526\",\n            \"default\": false,\n            \"ciudad\": 11\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/punto-retiro/29/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"punto-retiro",
+						"29",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ordenes de venta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/orden_venta/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"orden_venta",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get orden de venta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/orden_venta/6/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"orden_venta",
+						"6",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aprobar orden de venta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\n            \"orden_venta_id\": 6,\n            \"punto_retiro_id\": 33,\n            \"tipo_vehiculo_id\": 5,\n            \"fecha_retiro\": \"2021-11-05 15:00Z-4\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/orden_venta/aprobar/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"orden_venta",
+						"aprobar",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "age_size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get precios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/producto/precios/?ids=[14,18,12]",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"precios",
+						""
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "[14,18,12]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar precios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\"id\":18, \"precio\":123},\n    {\"id\":14, \"precio_mayorista\": 321},\n    {\"id\":6, \"precio\":100, \"precio_mayorista\": 321}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/producto/precios/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"precios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get disponibilidades",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/producto/disponibilidades/?ids=[14,18,6]",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"disponibilidades",
+						""
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "[14,18,6]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar disponibilidad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\"id\":18, \"cantidad_disponible\":123},\n    {\"id\":14, \"cantidad_disponible\": 321},\n    {\"id\":8, \"cantidad_disponible\":100}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_path}}/producto/precios/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"producto",
+						"precios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/balance/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"balance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver Resumen de Balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_path}}/balance/resumen/",
+					"host": [
+						"{{api_path}}"
+					],
+					"path": [
+						"balance",
+						"resumen",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "Token {{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

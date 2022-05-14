@@ -1,0 +1,2470 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>API de ABi para Proveedores</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #ededed;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#18bc9c;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#eff7fc;border-left:4px solid #3498db}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#3498db}.warning{color:black;background-color:#fcf0ef;border-left:4px solid #d62c1a}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#d62c1a}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #ededed;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#ededed;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#3498db}.badge.head{color:white;background-color:#3498db}.badge.options{color:white;background-color:#3498db}.badge.put{color:white;background-color:#f39c12}.badge.patch{color:white;background-color:#f39c12}.badge.post{color:white;background-color:#18bc9c}.badge.delete{color:white;background-color:#e74c3c}.collapse-button{float:right}.collapse-button .close{display:none;color:#18bc9c;cursor:pointer}.collapse-button .open{color:#18bc9c;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#18bc9c}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e80b8}.definition .method.head{color:#2e80b8}.definition .method.options{color:#2e80b8}.definition .method.post{color:#2eb89d}.definition .method.put{color:#b8822e}.definition .method.patch{color:#b8822e}.definition .method.delete{color:#b83b2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#ededed;text-decoration:none !important;border-top:1px solid #ededed;border-left:1px solid #ededed;border-right:1px solid #ededed;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #ededed;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#ededed;border-bottom:1px solid #ededed;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #ededed}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#000;background-color:white}.action h4.action-heading .method.head{color:#000;background-color:white}.action h4.action-heading .method.options{color:#000;background-color:white}.action h4.action-heading .method.put{color:#000;background-color:white}.action h4.action-heading .method.patch{color:#000;background-color:white}.action h4.action-heading .method.post{color:#000;background-color:white}.action h4.action-heading .method.delete{color:#000;background-color:white}.action h4.action-heading code{color:#444;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#3498db}.action.get h4.action-heading{color:white;background:#3498db;border-bottom-color:#3498db}.action.head{border-color:#3498db}.action.head h4.action-heading{color:white;background:#3498db;border-bottom-color:#3498db}.action.options{border-color:#3498db}.action.options h4.action-heading{color:white;background:#3498db;border-bottom-color:#3498db}.action.post{border-color:#18bc9c}.action.post h4.action-heading{color:white;background:#18bc9c;border-bottom-color:#18bc9c}.action.put{border-color:#f39c12}.action.put h4.action-heading{color:white;background:#f39c12;border-bottom-color:#f39c12}.action.patch{border-color:#f39c12}.action.patch h4.action-heading{color:white;background:#f39c12;border-bottom-color:#f39c12}.action.delete{border-color:#e74c3c}.action.delete h4.action-heading{color:white;background:#e74c3c;border-bottom-color:#e74c3c}</style></head><body class="preload"><div id="nav-background"></div><div class="container-fluid triple"><div class="row"><nav><div style="text-align: center;"><img src="/assets/abi-logo.png" style="width: 50%;" class="image"><h1 style="font-size: 20px;">API de ABi para Proveedores</h1></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#informacion-general">Informacion General</a></div><div class="collapse-content"><ul><li><a href="#informacion-general-empresa-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Ver detalles de mi empresa</a></li><li><a href="#informacion-general-tipos-de-vehiculo-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar tipos de vehiculo</a></li><li><a href="#informacion-general-ciudad-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar ciudades</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#producto-y-asociados">Producto y asociados</a></div><div class="collapse-content"><ul><li><a href="#producto-y-asociados-producto">Producto</a><ul><li><a href="#producto-y-asociados-producto-post"><span class="badge post"><i class="fa fa-plus"></i></span>Crear producto</a></li><li><a href="#producto-y-asociados-producto-post-1"><span class="badge post"><i class="fa fa-plus"></i></span>Crear productos</a></li><li><a href="#producto-y-asociados-producto-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar productos</a></li><li><a href="#producto-y-asociados-producto-get-1"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Ver detalles del producto</a></li><li><a href="#producto-y-asociados-producto-patch"><span class="badge patch"><i class="fa fa-pencil"></i></span>Guardar producto</a></li><li><a href="#producto-y-asociados-producto-delete"><span class="badge delete"><i class="fa fa-times"></i></span>Eliminar producto</a></li></ul></li><li><a href="#producto-y-asociados-imagen-de-producto">Imagen de Producto</a><ul><li><a href="#producto-y-asociados-imagen-de-producto-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Detalles de imagen</a></li><li><a href="#producto-y-asociados-imagen-de-producto-post"><span class="badge post"><i class="fa fa-plus"></i></span>Subir imagen</a></li><li><a href="#producto-y-asociados-imagen-de-producto-patch"><span class="badge patch"><i class="fa fa-pencil"></i></span>Guardar imagen</a></li><li><a href="#producto-y-asociados-imagen-de-producto-delete"><span class="badge delete"><i class="fa fa-times"></i></span>Eliminar imagen</a></li></ul></li><li><a href="#producto-y-asociados-seleccionar-imagen-de-portada-de-producto-post"><span class="badge post"><i class="fa fa-plus"></i></span>Poner imagen como portada</a></li><li><a href="#producto-y-asociados-precio-de-productos">Precio de Productos</a><ul><li><a href="#producto-y-asociados-precio-de-productos-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar precios</a></li><li><a href="#producto-y-asociados-precio-de-productos-post"><span class="badge post"><i class="fa fa-plus"></i></span>Actualizar precios</a></li></ul></li><li><a href="#producto-y-asociados-disponibilidad-de-productos-stock">Disponibilidad de Productos - Stock</a><ul><li><a href="#producto-y-asociados-disponibilidad-de-productos-stock-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar disponibilidad</a></li><li><a href="#producto-y-asociados-disponibilidad-de-productos-stock-post"><span class="badge post"><i class="fa fa-plus"></i></span>Actualizar disponibilidad</a></li></ul></li><li><a href="#producto-y-asociados-categorias-de-producto-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar categorias de producto</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#manejo-de-ordenes">Manejo de Ordenes</a></div><div class="collapse-content"><ul><li><a href="#manejo-de-ordenes-punto-de-retiro">Punto de retiro</a><ul><li><a href="#manejo-de-ordenes-punto-de-retiro-post"><span class="badge post"><i class="fa fa-plus"></i></span>Crear punto de retiro</a></li><li><a href="#manejo-de-ordenes-punto-de-retiro-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar puntos de retiro</a></li><li><a href="#manejo-de-ordenes-punto-de-retiro-get-1"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Ver detalles del punto de retiro</a></li><li><a href="#manejo-de-ordenes-punto-de-retiro-patch"><span class="badge patch"><i class="fa fa-pencil"></i></span>Guardar punto de retiro</a></li><li><a href="#manejo-de-ordenes-punto-de-retiro-delete"><span class="badge delete"><i class="fa fa-times"></i></span>Eliminar punto de retiro</a></li></ul></li><li><a href="#manejo-de-ordenes-ordenes-de-venta-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar ordenes</a></li><li><a href="#manejo-de-ordenes-orden-de-venta-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Ver detalles de orden de venta</a></li><li><a href="#manejo-de-ordenes-aprobar-orden-de-venta-post"><span class="badge post"><i class="fa fa-plus"></i></span>Aprobar orden</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#informacion-financiera">Informacion financiera</a></div><div class="collapse-content"><ul><li><a href="#informacion-financiera-balance-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Listar detalle de balance</a></li><li><a href="#informacion-financiera-resumen-de-balance-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Ver Resumen de Balance</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#señales-al-fabricante">Señales al fabricante</a></div><div class="collapse-content"><ul><li><a href="#señales-al-fabricante-notificacion-orden-de-venta-nueva-post"><span class="badge post"><i class="fa fa-plus"></i></span>Notificar orden nueva</a></li></ul></div></div><p style="text-align: center; word-wrap: break-word;"><a href="https://abi.com.py/api/v1/fab">https://abi.com.py/api/v1/fab</a></p></nav><div class="content"><div id="right-panel-background"></div><div class="middle"><header><h1 id="top">API de ABi para Proveedores</h1></header></div><div class="right"><h5>API Endpoint</h5><a href="https://abi.com.py/api/v1/fab">https://abi.com.py/api/v1/fab</a></div><div class="middle"><p>Esta api permite a los proveedores realizar todas las operaciones de administracion en la plataforma abi</p>
+</div><div class="middle"><section id="informacion-general" class="resource-group"><h2 class="group-heading">Informacion General <a href="#informacion-general" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="informacion-general-empresa" class="resource"><h3 class="resource-heading">Empresa <a href="#informacion-general-empresa" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/fabricante/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Empresa 1"</span></span>,
+    "<span class="hljs-attribute">imagen_perfil</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/691f6d4532194deaa7ae26f0dbeda792.png"</span></span>,
+    "<span class="hljs-attribute">aprobado</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2020-09-21T17:06:39.369435-04:00"</span></span>,
+    "<span class="hljs-attribute">aprobado_por</span>": <span class="hljs-value"><span class="hljs-string">"administracion@abi.com.py"</span></span>,
+     "<span class="hljs-attribute">puntos_retiro</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">63</span></span>,
+            "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">97</span></span>,
+            "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Casa Central"</span></span>,
+            "<span class="hljs-attribute">calle_principal</span>": <span class="hljs-value"><span class="hljs-string">"Avenida Santísima Trinidad"</span></span>,
+            "<span class="hljs-attribute">calle_secundaria</span>": <span class="hljs-value"><span class="hljs-string">"Julio Correa"</span></span>,
+            "<span class="hljs-attribute">numero</span>": <span class="hljs-value"><span class="hljs-string">"9"</span></span>,
+            "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"p"</span></span>,
+            "<span class="hljs-attribute">ubicacion</span>": <span class="hljs-value"><span class="hljs-string">"-25.269820398026134,-57.563507557497374"</span></span>,
+            "<span class="hljs-attribute">default</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">ciudad</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+            "<span class="hljs-attribute">nro_telefono</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+        </span>},
+    ]</span>,
+     "<span class="hljs-attribute">usuarios</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">184</span></span>,
+            "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"usuario@gmail.com"</span></span>,
+            "<span class="hljs-attribute">first_name</span>": <span class="hljs-value"><span class="hljs-string">"Pedro"</span></span>,
+            "<span class="hljs-attribute">last_name</span>": <span class="hljs-value"><span class="hljs-string">"Perez"</span></span>,
+            "<span class="hljs-attribute">nro_telefono</span>": <span class="hljs-value"><span class="hljs-string">"595981123456"</span></span>,
+            "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"usuario@gmail.com"</span></span>,
+            "<span class="hljs-attribute">nro_documento</span>": <span class="hljs-value"><span class="hljs-string">"1234567"</span></span>,
+            "<span class="hljs-attribute">ruc</span>": <span class="hljs-value"><span class="hljs-string">"123444447-9"</span></span>,
+            "<span class="hljs-attribute">razon_social</span>": <span class="hljs-value"><span class="hljs-string">"Pedro Perez"</span></span>,
+            "<span class="hljs-attribute">imagen_perfil</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/691f6d4532194deaa7ae26f0dbeda792.png"</span></span>,
+            "<span class="hljs-attribute">direcciones</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">56</span></span>,
+                    "<span class="hljs-attribute">usuario</span>": <span class="hljs-value"><span class="hljs-number">184</span></span>,
+                    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Oficina"</span></span>,
+                    "<span class="hljs-attribute">calle_principal</span>": <span class="hljs-value"><span class="hljs-string">"Avenida Santísima Trinidad"</span></span>,
+                    "<span class="hljs-attribute">calle_secundaria</span>": <span class="hljs-value"><span class="hljs-string">"Sargento Primero Manuel Benítez"</span></span>,
+                    "<span class="hljs-attribute">numero</span>": <span class="hljs-value"><span class="hljs-string">"123"</span></span>,
+                    "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"En una esquina, casa blanca"</span></span>,
+                    "<span class="hljs-attribute">ubicacion</span>": <span class="hljs-value"><span class="hljs-string">"-25.267705375797167,-57.56631135911449"</span></span>,
+                    "<span class="hljs-attribute">default</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                    "<span class="hljs-attribute">ciudad</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                    "<span class="hljs-attribute">icono</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">49</span></span>,
+                    "<span class="hljs-attribute">usuario</span>": <span class="hljs-value"><span class="hljs-number">184</span></span>,
+                    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Casa"</span></span>,
+                    "<span class="hljs-attribute">calle_principal</span>": <span class="hljs-value"><span class="hljs-string">"Avenida Santísima Trinidad"</span></span>,
+                    "<span class="hljs-attribute">calle_secundaria</span>": <span class="hljs-value"><span class="hljs-string">"Capitán Aparicio Figari Riquelme"</span></span>,
+                    "<span class="hljs-attribute">numero</span>": <span class="hljs-value"><span class="hljs-string">"5"</span></span>,
+                    "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"Segundo piso, rejas negras"</span></span>,
+                    "<span class="hljs-attribute">ubicacion</span>": <span class="hljs-value"><span class="hljs-string">"-25.27078518805936,-57.56155252442114"</span></span>,
+                    "<span class="hljs-attribute">default</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                    "<span class="hljs-attribute">ciudad</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                    "<span class="hljs-attribute">icono</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+                </span>},
+            ]</span>,
+            "<span class="hljs-attribute">fecha_nacimiento</span>": <span class="hljs-value"><span class="hljs-string">"2000-11-07"</span></span>,
+            "<span class="hljs-attribute">genero</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+            "<span class="hljs-attribute">email_oferta</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+            "<span class="hljs-attribute">notificacion_oferta</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+            "<span class="hljs-attribute">datos_facturacion</span>": <span class="hljs-value">[]
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">rubros</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Electrónica"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Muebles"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Ropas"</span>
+    </span>}
+    ]</span>,
+    "<span class="hljs-attribute">ruc</span>": <span class="hljs-value"><span class="hljs-string">"800123123-9"</span></span>,
+    "<span class="hljs-attribute">razon_social</span>": <span class="hljs-value"><span class="hljs-string">"Rsocial Empresa 1 S.R.L."</span></span>,
+    "<span class="hljs-attribute">nro_telefono</span>": <span class="hljs-value"><span class="hljs-string">"021567890"</span></span>,
+    "<span class="hljs-attribute">resena_empresa</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">api_enabled</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">ip_safelist</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">pedidos_signal_endpoint</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">rating</span>": <span class="hljs-value"><span class="hljs-number">4.5</span></span>,
+    "<span class="hljs-attribute">ratings</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">comision_empresa</span>": <span class="hljs-value"><span class="hljs-number">0.0</span></span>,
+    "<span class="hljs-attribute">tipo_proveedor</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+    "<span class="hljs-attribute">fecha_aceptacion_contrato</span>": <span class="hljs-value"><span class="hljs-string">"2022-02-09T16:59:55.876798-03:00"</span></span>,
+    "<span class="hljs-attribute">constancia_ruc</span>": <span class="hljs-value"><span class="hljs-string">"http://abi.com.py/media/constancias_ruc_fabricante/602b64810b5e46f4a415228f5e6cc19a.png"</span></span>,
+    "<span class="hljs-attribute">bloqueado</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">dias_apertura</span>": <span class="hljs-value">[
+        <span class="hljs-string">"1"</span>,
+        <span class="hljs-string">"3"</span>,
+        <span class="hljs-string">"5"</span>
+    ]</span>,
+    "<span class="hljs-attribute">hora_apertura</span>": <span class="hljs-value"><span class="hljs-string">"12:00:00"</span></span>,
+    "<span class="hljs-attribute">hora_cierre</span>": <span class="hljs-value"><span class="hljs-string">"20:00:00"</span></span>,
+    "<span class="hljs-attribute">celular</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">sitio_web</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">horario_atencion</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="informacion-general-empresa-get" class="action get"><h4 class="action-heading"><div class="name">Ver detalles de mi empresa</div><a href="#informacion-general-empresa-get" class="method get">GET</a><code class="uri">/fabricante/</code></h4><p>Retorna los detalles de mi perfil empresarial de fabricante en abi.</p>
+<p><strong>Campos de cada objeto:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de fabricante</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre de fabricante</td>
+</tr>
+<tr>
+<td>imagen_perfil</td>
+<td>integer</td>
+<td>url de imagen de perfil de fabricante</td>
+</tr>
+<tr>
+<td>aprobado</td>
+<td>boolean</td>
+<td>está o no aprobado por el staff</td>
+</tr>
+<tr>
+<td>fecha_agregado</td>
+<td>string</td>
+<td>fecha en formato ISO en la cual se registró</td>
+</tr>
+<tr>
+<td>aprobado_por</td>
+<td>string</td>
+<td>email del usuario quien aprobó al fabricante</td>
+</tr>
+<tr>
+<td>puntos_retiro</td>
+<td>object/null</td>
+<td>puntos de retiro disponibles</td>
+</tr>
+<tr>
+<td>usuarios</td>
+<td>object</td>
+<td>listado de usuarios relacionados al fabricante</td>
+</tr>
+<tr>
+<td>rubros</td>
+<td>object</td>
+<td>rubros del fabricante</td>
+</tr>
+<tr>
+<td>ruc</td>
+<td>string</td>
+<td>ruc del fabricante</td>
+</tr>
+<tr>
+<td>razon_social</td>
+<td>string</td>
+<td>razón social del fabricante</td>
+</tr>
+<tr>
+<td>nro_telefono</td>
+<td>string</td>
+<td>número de teléfono del fabricante</td>
+</tr>
+<tr>
+<td>resena_empresa</td>
+<td>string/null</td>
+<td>reseña del fabricante</td>
+</tr>
+<tr>
+<td>api_enabled</td>
+<td>boolean</td>
+<td>está o no habilitada la api</td>
+</tr>
+<tr>
+<td>ip_safelist</td>
+<td>string</td>
+<td>listado de IP’s habilitadas para el acceso la api</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>float</td>
+<td>calificación del fabricante</td>
+</tr>
+<tr>
+<td>ratings</td>
+<td>integer</td>
+<td>calificación del fabricante</td>
+</tr>
+<tr>
+<td>comision</td>
+<td>float</td>
+<td>comisión del fabricante</td>
+</tr>
+<tr>
+<td>tipo_proveedor</td>
+<td>integer</td>
+<td>indica el tipo de fabricante (10 -&gt; emprendedor, 20 -&gt; empresa)</td>
+</tr>
+<tr>
+<td>fecha_aceptacion_contrato</td>
+<td>string</td>
+<td>fecha en formato ISO en la cual se aceptó el fecha_aceptacion_contrato</td>
+</tr>
+<tr>
+<td>constancia_ruc</td>
+<td>string</td>
+<td>url de la imagen de la constancia de ruc</td>
+</tr>
+<tr>
+<td>bloqueado</td>
+<td>boolean</td>
+<td>está o no bloqueado</td>
+</tr>
+<tr>
+<td>dias_apertura</td>
+<td>object</td>
+<td>dias de apertura del negocio (1 -&gt; lunes, 2 -&gt; martes, 3 -&gt; miércoles, 4 -&gt; jueves, 5 -&gt; viernes, 6 -&gt; sábado, 7 -&gt; domingo )</td>
+</tr>
+<tr>
+<td>hora_apertura</td>
+<td>string</td>
+<td>hora de apertura del negocio</td>
+</tr>
+<tr>
+<td>hora_cierre</td>
+<td>string</td>
+<td>hora de cierre del negocio</td>
+</tr>
+<tr>
+<td>celular</td>
+<td>string</td>
+<td>número de celular del fabricante</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>correo electrónico del fabricante</td>
+</tr>
+<tr>
+<td>sitio_web</td>
+<td>string</td>
+<td>url del sitio web del fabricante</td>
+</tr>
+<tr>
+<td>horario_atencion</td>
+<td>string</td>
+<td>descripción del horario de atención del fabricante</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos del punto de retiro dentro del perfil empresarial</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del punto de retiro</td>
+</tr>
+<tr>
+<td>fabricante</td>
+<td>integer</td>
+<td>id del fabricante</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre del punto de retiro</td>
+</tr>
+<tr>
+<td>calle_principal</td>
+<td>string</td>
+<td>nombre de la calle principal del punto de retiro</td>
+</tr>
+<tr>
+<td>calle_secundaria</td>
+<td>string</td>
+<td>nombre de la calle secundaria del punto de retiro</td>
+</tr>
+<tr>
+<td>numero</td>
+<td>string</td>
+<td>número de casa del punto de retiro</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>string</td>
+<td>referencia para llegar al punto de retiro</td>
+</tr>
+<tr>
+<td>ubicacion</td>
+<td>string</td>
+<td>latitud y longitud donde se encuentra el punto de retiro</td>
+</tr>
+<tr>
+<td>default</td>
+<td>boolean</td>
+<td>es punto de retiro por defecto</td>
+</tr>
+<tr>
+<td>ciudad</td>
+<td>integer</td>
+<td>id de la ciudad relacionada</td>
+</tr>
+<tr>
+<td>nro_telefono</td>
+<td>string/null</td>
+<td>número de teléfono del fabricante</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos de usuarios dentro del perfil empresarial</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del usuario</td>
+</tr>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>nombre de usuario</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>nombre del usuario</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>apellido del usuario</td>
+</tr>
+<tr>
+<td>nro_telefono</td>
+<td>string</td>
+<td>número de teléfono del usuario</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>correo electrónico del usuario</td>
+</tr>
+<tr>
+<td>nro_documento</td>
+<td>string</td>
+<td>número de documento del usuario</td>
+</tr>
+<tr>
+<td>ruc</td>
+<td>string</td>
+<td>ruc del usuario</td>
+</tr>
+<tr>
+<td>razon_social</td>
+<td>string</td>
+<td>razón social del usuario</td>
+</tr>
+<tr>
+<td>imagen_perfil</td>
+<td>string</td>
+<td>url de la imagen de perfil del usuario</td>
+</tr>
+<tr>
+<td>direcciones</td>
+<td>object</td>
+<td>listado de direcciones registradas</td>
+</tr>
+<tr>
+<td>fecha_nacimiento</td>
+<td>string</td>
+<td>fecha de nacimiento en formato ISO</td>
+</tr>
+<tr>
+<td>genero</td>
+<td>integer</td>
+<td>genero del usuario (10 -&gt; femenino, 20 -&gt; masculino, 30 -&gt; otro)</td>
+</tr>
+<tr>
+<td>email_oferta</td>
+<td>boolean</td>
+<td>está suscrito para recibir ofertas por email</td>
+</tr>
+<tr>
+<td>notificacion_oferta</td>
+<td>boolean</td>
+<td>está suscrito para recibir ofertas por notificaciones</td>
+</tr>
+<tr>
+<td>datos_facturacion</td>
+<td>object</td>
+<td>datos de facturación del usuario</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos de direcciones dentro de usuarios</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la dirección</td>
+</tr>
+<tr>
+<td>usuario</td>
+<td>integer</td>
+<td>id del usuario</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre asociado a la dirección</td>
+</tr>
+<tr>
+<td>calle_principal</td>
+<td>string</td>
+<td>nombre de la calle principal de la dirección</td>
+</tr>
+<tr>
+<td>calle_secundaria</td>
+<td>string</td>
+<td>nombre de la calle secundaria de la dirección</td>
+</tr>
+<tr>
+<td>numero</td>
+<td>string</td>
+<td>número de casa de la dirección</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>string</td>
+<td>referencia para llegar a la dirección</td>
+</tr>
+<tr>
+<td>ubicacion</td>
+<td>string</td>
+<td>latitud y longitud donde se encuentra la dirección</td>
+</tr>
+<tr>
+<td>default</td>
+<td>boolean</td>
+<td>es dirección por defecto</td>
+</tr>
+<tr>
+<td>ciudad</td>
+<td>integer</td>
+<td>id de la ciudad relacionada</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos del rubro dentro del perfil empresarial</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del rubro</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre del rubro</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><div id="informacion-general-tipos-de-vehiculo" class="resource"><h3 class="resource-heading">Tipos de vehiculo <a href="#informacion-general-tipos-de-vehiculo" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/tipo-vehiculo/?<span class="hljs-attribute">page=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">page_size=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+  "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">previous</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Camión refrigerado"</span></span>,
+      "<span class="hljs-attribute">subida_bandera</span>": <span class="hljs-value"><span class="hljs-number">10000</span></span>,
+      "<span class="hljs-attribute">precio_minimo</span>": <span class="hljs-value"><span class="hljs-number">10000</span></span>,
+      "<span class="hljs-attribute">precio_km</span>": <span class="hljs-value"><span class="hljs-number">5000</span></span>,
+      "<span class="hljs-attribute">precio_minuto</span>": <span class="hljs-value"><span class="hljs-number">5000</span></span>,
+      "<span class="hljs-attribute">refrigerado</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="informacion-general-tipos-de-vehiculo-get" class="action get"><h4 class="action-heading"><div class="name">Listar tipos de vehiculo</div><a href="#informacion-general-tipos-de-vehiculo-get" class="method get">GET</a><code class="uri">/tipo-vehiculo/{?page,page_size}</code></h4><p>Retorna la lista de tipos de vehiculo disponibles, junto con los detalles de paginacion.</p>
+<p>Campos de cada objeto:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del tipo de vehiculo</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre del tipo</td>
+</tr>
+<tr>
+<td>subida_bandera</td>
+<td>integer</td>
+<td>costo de subida de bandera</td>
+</tr>
+<tr>
+<td>precio_minimo</td>
+<td>integer</td>
+<td>precio minimo a pagar por ruta</td>
+</tr>
+<tr>
+<td>precio_km</td>
+<td>integer</td>
+<td>precio por kilometro recorrido</td>
+</tr>
+<tr>
+<td>precio_minuto</td>
+<td>integer</td>
+<td>precio por minuto en ruta</td>
+</tr>
+<tr>
+<td>refrigerado</td>
+<td>boolean</td>
+<td>el vehiculo tiene refrigeracion o no</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Numero de pagina</strong>. <em>Por defecto: 1</em>.</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Tamaño de pagina</strong>. <em>Por defecto: 10</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="informacion-general-ciudad" class="resource"><h3 class="resource-heading">Ciudad <a href="#informacion-general-ciudad" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/ciudad/?<span class="hljs-attribute">page=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">page_size=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"25 de Diciembre"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Abaí"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Acahay"</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="informacion-general-ciudad-get" class="action get"><h4 class="action-heading"><div class="name">Listar ciudades</div><a href="#informacion-general-ciudad-get" class="method get">GET</a><code class="uri">/ciudad/{?page,page_size}</code></h4><p>Retorna la lista de ciudades disponibles.</p>
+<p>Campos de cada objeto:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la ciudad</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre de la ciudad</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Numero de pagina</strong>. <em>Por defecto: 1</em>.</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Tamaño de pagina</strong>. <em>Por defecto: 10</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><section id="producto-y-asociados" class="resource-group"><h2 class="group-heading">Producto y asociados <a href="#producto-y-asociados" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="producto-y-asociados-producto" class="resource"><h3 class="resource-heading">Producto <a href="#producto-y-asociados-producto" class="permalink">&para;</a></h3><p>Maneja los productos del fabricante dentro de la plataforma.</p>
+</div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><div class="description"><pre><code>{
+  "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+  "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+  "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+  "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"asdads\n"</span></span>,
+  "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">"asd,dsa"</span></span>,
+  "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+  "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">999</span></span>,
+  "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">998</span></span>,
+  "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+  "<span class="hljs-attribute">api_extra_data</span>" : <span class="hljs-value"><span class="hljs-string">"34"</span>
+</span>}</code></pre>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"asdads"</span></span>,
+    "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">"asd,dsa"</span></span>,
+    "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">12.0</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">999.0</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">998.0</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">200.0</span></span>,
+    "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2021-01-08T08:30:26.912487-03:00"</span></span>,
+    "<span class="hljs-attribute">fecha_actualizado</span>": <span class="hljs-value"><span class="hljs-string">"2021-01-08T08:30:26.912568-03:00"</span></span>,
+    "<span class="hljs-attribute">activo</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">api_extra_data</span>" : <span class="hljs-value"><span class="hljs-string">"34"</span></span>,
+    "<span class="hljs-attribute">imagenes</span>": <span class="hljs-value">[
+           <span class="hljs-string">"id"</span>: <span class="hljs-number">332</span>,
+            <span class="hljs-string">"imagen"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-string">"producto"</span>: <span class="hljs-number">394</span>,
+            <span class="hljs-string">"portada"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-string">"resoluciones"</span>: {
+                "<span class="hljs-attribute">thumbnail</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+                "<span class="hljs-attribute">medium</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+                "<span class="hljs-attribute">fullres</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+            </span>}
+    ]</span>,
+    "<span class="hljs-attribute">peso_kg</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">alto_cm</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">ancho_cm</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">profundidad_cm</span>" : <span class="hljs-value"><span class="hljs-number">0</span>
+    <span class="hljs-string">"refrigeracion"</span>: <span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">video</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">especificaciones</span>": <span class="hljs-value"><span class="hljs-string">"-"</span></span>,
+    "<span class="hljs-attribute">fecha_reposicion</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">cantidad_reposicion</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/producto/15-asd/"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-producto-post" class="action post"><h4 class="action-heading"><div class="name">Crear producto</div><a href="#producto-y-asociados-producto-post" class="method post">POST</a><code class="uri">/producto/</code></h4><p>Crea un producto nuevo.
+El producto queda en estado pendiente, el staff debe moderarlo para que aparezca en la plataforma.</p>
+<p><strong>Campos de cada objeto:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>si</td>
+<td>autonumerico</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>fabricante</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id del fabricante</td>
+</tr>
+<tr>
+<td>categoria</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id de categoria de producto</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>nombre del producto</td>
+</tr>
+<tr>
+<td>descripcion</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>descripcion corta del producto</td>
+</tr>
+<tr>
+<td>descripcion_extensa</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>descripcion extensa del producto, incluye texto estilizado</td>
+</tr>
+<tr>
+<td>etiquetas</td>
+<td>string</td>
+<td>no</td>
+<td>“”</td>
+<td>etiquetas de producto, separadas por coma, ejemplo: “tecnologia, ropas”</td>
+</tr>
+<tr>
+<td>cantidad_mayorista</td>
+<td>integer</td>
+<td>si</td>
+<td>0</td>
+<td>cantidad de productos a comprar para activar el precio mayorista</td>
+</tr>
+<tr>
+<td>precio</td>
+<td>integer</td>
+<td>si</td>
+<td>0</td>
+<td>precio normal de venta de producto</td>
+</tr>
+<tr>
+<td>precio_mayorista</td>
+<td>integer</td>
+<td>si</td>
+<td>0</td>
+<td>precio mejorado de producto</td>
+</tr>
+<tr>
+<td>cantidad_disponible</td>
+<td>integer</td>
+<td>si</td>
+<td>0</td>
+<td>stock disponible para la venta</td>
+</tr>
+<tr>
+<td>peso_kg</td>
+<td>float</td>
+<td>no</td>
+<td>0</td>
+<td>peso del producto en kilogramos</td>
+</tr>
+<tr>
+<td>alto_cm</td>
+<td>float</td>
+<td>no</td>
+<td>0</td>
+<td>alto del producto en centimetros</td>
+</tr>
+<tr>
+<td>ancho_cm</td>
+<td>float</td>
+<td>no</td>
+<td>0</td>
+<td>ancho del producto en centimetros</td>
+</tr>
+<tr>
+<td>profundidad_cm</td>
+<td>float</td>
+<td>no</td>
+<td>0</td>
+<td>profundidad del producto en centimetros</td>
+</tr>
+<tr>
+<td>refrigeracion</td>
+<td>integer</td>
+<td>no</td>
+<td>0</td>
+<td>refrigeracion requerida para el producto (0 -&gt; no refrigerado, 10 -&gt; frio, 20 -&gt; congelado)</td>
+</tr>
+<tr>
+<td>api_extra_data</td>
+<td>string</td>
+<td>no</td>
+<td>“”</td>
+<td>campo extra para los fabricantes. no se usa en el sistema.</td>
+</tr>
+<tr>
+<td>video</td>
+<td>string</td>
+<td>no</td>
+<td>null</td>
+<td>video del producto</td>
+</tr>
+<tr>
+<td>especificaciones</td>
+<td>string</td>
+<td>no</td>
+<td>“-”</td>
+<td>especificaciones del producto</td>
+</tr>
+<tr>
+<td>fecha_reposicion</td>
+<td>string</td>
+<td>no</td>
+<td>null</td>
+<td>fecha en formato ISO de la reposición del producto</td>
+</tr>
+<tr>
+<td>cantidad_reposicion</td>
+<td>integer</td>
+<td>no</td>
+<td>null</td>
+<td>cantidad a reponer</td>
+</tr>
+<tr>
+<td>link</td>
+<td>string</td>
+<td>no</td>
+<td>“”</td>
+<td>link del producto en la tienda ABi</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos de imagenes dentro de producto:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la imagen</td>
+</tr>
+<tr>
+<td>imagen</td>
+<td>string</td>
+<td>url de la imagen</td>
+</tr>
+<tr>
+<td>producto</td>
+<td>integer</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>portada</td>
+<td>boolean</td>
+<td>es o no la imagen principal</td>
+</tr>
+<tr>
+<td>resoluciones</td>
+<td>object</td>
+<td>tamaños disponibles de la imagen</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/productos/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><div class="description"><pre><code>[
+    {
+    "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"wer"</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">3233</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">3000</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+    </span>},
+    {
+    "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"wer"</span></span>,
+    "<span class="hljs-attribute">api_extra_data</span>": <span class="hljs-value"><span class="hljs-string">"asds"</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">3233</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">3000</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+    </span>}
+]</code></pre>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">17</span></span>,
+    "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"wer"</span></span>,
+    "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">3233</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">3000</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2021-03-24T17:16:43.102275-03:00"</span></span>,
+    "<span class="hljs-attribute">fecha_actualizado</span>": <span class="hljs-value"><span class="hljs-string">"2021-03-24T17:16:43.102331-03:00"</span></span>,
+    "<span class="hljs-attribute">activo</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">peso_kg</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">alto_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">ancho_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">profundidad_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">refrigeracion</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">video</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">especificaciones</span>": <span class="hljs-value"><span class="hljs-string">"-"</span></span>,
+    "<span class="hljs-attribute">fecha_reposicion</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">cantidad_reposicion</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/producto/17-asd/"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+    "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"wer"</span></span>,
+    "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">3233</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">3000</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2021-03-24T17:16:43.148018-03:00"</span></span>,
+    "<span class="hljs-attribute">fecha_actualizado</span>": <span class="hljs-value"><span class="hljs-string">"2021-03-24T17:16:43.148072-03:00"</span></span>,
+    "<span class="hljs-attribute">activo</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">peso_kg</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">alto_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">ancho_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">profundidad_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">refrigeracion</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">video</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">especificaciones</span>": <span class="hljs-value"><span class="hljs-string">"-"</span></span>,
+    "<span class="hljs-attribute">fecha_reposicion</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">cantidad_reposicion</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/producto/17-asd/"</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-producto-post-1" class="action post"><h4 class="action-heading"><div class="name">Crear productos</div><a href="#producto-y-asociados-producto-post-1" class="method post">POST</a><code class="uri">/productos/</code></h4><p>Crea una lista de productos nuevos, de forma atomica (todos o ninguno).
+El producto queda en estado pendiente, el staff debe moderarlo para que aparezca en la plataforma.</p>
+<p>Ver <a href="#producto-y-asociados-producto-post">Crear producto</a> para la descripcion de campos de producto</p>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/?<span class="hljs-attribute">page=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">page_size=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+  "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">previous</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+      "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+      "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Nombre producto 1"</span></span>,
+      "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"Descripcion corta producto 1"</span></span>,
+      "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"Descripcion larga producto 1"</span></span>,
+      "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">"computadora,laptop"</span></span>,
+      "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">2000000</span></span>,
+      "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">1500000</span></span>,
+      "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">86</span></span>,
+      "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2020-10-20T08:55:38.534647-03:00"</span></span>,
+      "<span class="hljs-attribute">fecha_actualizado</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-16T10:53:26.409459-03:00"</span></span>,
+      "<span class="hljs-attribute">imagenes</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">74</span></span>,
+          "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/70ff9eaccd8b4c988088e4e2d088b917.jpg"</span></span>,
+          "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+          "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">73</span></span>,
+          "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/e7b7263a9c354d51b4b38e70df416b5c.jpg"</span></span>,
+          "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+          "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">api_extra_data</span>": <span class="hljs-value"><span class="hljs-string">"34"</span></span>,
+      "<span class="hljs-attribute">peso_kg</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">alto_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">ancho_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">profundidad_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/producto/9-Nombre-producto-1/"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+      "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+      "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Nombre producto 2"</span></span>,
+      "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"Descripcion corta producto 2"</span></span>,
+      "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"Descripcion larga producto 2"</span></span>,
+      "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">"computadora,escritorio"</span></span>,
+      "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+      "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">500000</span></span>,
+      "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">350000</span></span>,
+      "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">9993</span></span>,
+      "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2020-10-22T11:09:44.107746-03:00"</span></span>,
+      "<span class="hljs-attribute">fecha_actualizado</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-16T13:16:05.619483-03:00"</span></span>,
+      "<span class="hljs-attribute">imagenes</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">76</span></span>,
+          "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/d71a728db1ef4eefabef744c05aa9c16.jpeg"</span></span>,
+          "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+          "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+      "<span class="hljs-attribute">api_extra_data</span>": <span class="hljs-value"><span class="hljs-string">"campo extra | info | 56"</span></span>,
+      "<span class="hljs-attribute">peso_kg</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">alto_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">ancho_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">profundidad_cm</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/producto/10-Nombre-producto-2/"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-producto-get" class="action get"><h4 class="action-heading"><div class="name">Listar productos</div><a href="#producto-y-asociados-producto-get" class="method get">GET</a><code class="uri">/producto/{?page,page_size}</code></h4><p>Retorna la lista de productos del fabricante, junto con los detalles de paginacion.</p>
+<p>Ver <a href="#producto-y-asociados-producto-get-1">Ver detalles producto</a> para la descripcion de campos de producto</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<p><strong>Numero de pagina</strong>.</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Tamaño de pagina</strong>. <em>Por defecto: 10</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/<span class="hljs-attribute" title="id_producto">id_producto</span>/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+      "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+        "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Nombre de fabricante 1"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Nombre producto 1"</span></span>,
+      "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"Descripcion corta producto 1"</span></span>,
+      "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"Descripcion larga producto 1"</span></span>,
+      "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">"computadora,laptop"</span></span>,
+      "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">2000000</span></span>,
+      "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">1500000</span></span>,
+      "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">86</span></span>,
+      "<span class="hljs-attribute">fecha_agregado</span>": <span class="hljs-value"><span class="hljs-string">"2020-10-20T08:55:38.534647-03:00"</span></span>,
+      "<span class="hljs-attribute">fecha_actualizado</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-16T10:53:26.409459-03:00"</span></span>,
+      "<span class="hljs-attribute">imagenes</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">74</span></span>,
+          "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/70ff9eaccd8b4c988088e4e2d088b917.jpg"</span></span>,
+          "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+          "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">73</span></span>,
+          "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/e7b7263a9c354d51b4b38e70df416b5c.jpg"</span></span>,
+          "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+          "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+      "<span class="hljs-attribute">api_extra_data</span>" : <span class="hljs-value"><span class="hljs-string">"campo extra | info | 56"</span></span>,
+      "<span class="hljs-attribute">peso_kg</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">alto_cm</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">ancho_cm</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">profundidad_cm</span>" : <span class="hljs-value"><span class="hljs-number">0</span></span>,
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-producto-get-1" class="action get"><h4 class="action-heading"><div class="name">Ver detalles del producto</div><a href="#producto-y-asociados-producto-get-1" class="method get">GET</a><code class="uri">/producto/{id_producto}/</code></h4><p>Devuelve todos los detalles del producto, incluyendo informacion extra generada.</p>
+<p>Ver <a href="#producto-y-asociados-producto-post">Crear producto</a> para campos primarios de producto.</p>
+<p>Otros campos:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fecha_agregado</td>
+<td>string</td>
+<td>fecha de creacion</td>
+</tr>
+<tr>
+<td>fecha_actualizado</td>
+<td>string</td>
+<td>nombre del producto</td>
+</tr>
+<tr>
+<td>imagenes</td>
+<td>array[imagen producto]</td>
+<td>imagen de producto, ver <a href="#producto-y-asociados-imagen-de-producto-get">Ver detalles imagen</a> para campos</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_producto</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method patch">PATCH</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/<span class="hljs-attribute" title="id_producto">id_producto</span>/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span><span class="tab-button">example 2</span></div><div class="tab"><div><div class="inner"><div class="description"><pre><code>{
+  "<span class="hljs-attribute">categoria</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+  "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"nombre cambiado"</span></span>,
+  "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"asd"</span></span>,
+  "<span class="hljs-attribute">descripcion_extensa</span>": <span class="hljs-value"><span class="hljs-string">"asdads\n"</span></span>,
+  "<span class="hljs-attribute">etiquetas</span>": <span class="hljs-value"><span class="hljs-string">"asd,dsa"</span></span>,
+  "<span class="hljs-attribute">cantidad_mayorista</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+  "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">999</span></span>,
+  "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">998</span></span>,
+  "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+</span>}</code></pre>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>: {id_producto},
+    <span class="hljs-string">"fabricante"</span>: <span class="hljs-number">27</span>,
+    <span class="hljs-string">"nombre"</span>: <span class="hljs-string">"nombre cambiado"</span>,
+    <span class="hljs-string">"descripcion"</span>: <span class="hljs-string">"asd"</span>,
+    <span class="hljs-string">"descripcion_extensa"</span>: <span class="hljs-string">"asdads"</span>,
+    <span class="hljs-string">"etiquetas"</span>: <span class="hljs-string">"asd,dsa"</span>,
+    <span class="hljs-string">"cantidad_mayorista"</span>: <span class="hljs-number">12.0</span>,
+    <span class="hljs-string">"precio"</span>: <span class="hljs-number">2000.0</span>,
+    <span class="hljs-string">"precio_mayorista"</span>: <span class="hljs-number">998.0</span>,
+    <span class="hljs-string">"cantidad_disponible"</span>: <span class="hljs-number">200.0</span>,
+    <span class="hljs-string">"fecha_agregado"</span>: <span class="hljs-string">"2021-01-08T08:30:26.912487-03:00"</span>,
+    <span class="hljs-string">"fecha_actualizado"</span>: <span class="hljs-string">"2021-01-08T08:34:42.626380-03:00"</span>,
+    <span class="hljs-string">"categoria"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-string">"api_extra_data"</span> : <span class="hljs-string">"campo extra | otra info | 78"</span>,
+    <span class="hljs-string">"peso_kg"</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">"alto_cm"</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">"ancho_cm"</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">"profundidad_cm"</span> : <span class="hljs-number">0</span>
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></div><div class="tab"><div><div class="inner"><div class="description"><p>{
+“descripcion_extensa”: “asdsddsdads”,
+}</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>: {id_producto},
+    <span class="hljs-string">"fabricante"</span>: <span class="hljs-number">27</span>,
+    <span class="hljs-string">"nombre"</span>: <span class="hljs-string">"nombre cambiado"</span>,
+    <span class="hljs-string">"descripcion"</span>: <span class="hljs-string">"asd"</span>,
+    <span class="hljs-string">"descripcion_extensa"</span>: <span class="hljs-string">"asdads"</span>,
+    <span class="hljs-string">"etiquetas"</span>: <span class="hljs-string">"asd,dsa"</span>,
+    <span class="hljs-string">"cantidad_mayorista"</span>: <span class="hljs-number">12.0</span>,
+    <span class="hljs-string">"precio"</span>: <span class="hljs-number">2000.0</span>,
+    <span class="hljs-string">"precio_mayorista"</span>: <span class="hljs-number">998.0</span>,
+    <span class="hljs-string">"cantidad_disponible"</span>: <span class="hljs-number">200.0</span>,
+    <span class="hljs-string">"fecha_agregado"</span>: <span class="hljs-string">"2021-01-08T08:30:26.912487-03:00"</span>,
+    <span class="hljs-string">"fecha_actualizado"</span>: <span class="hljs-string">"2021-01-08T08:34:42.626380-03:00"</span>,
+    <span class="hljs-string">"categoria"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-string">"api_extra_data"</span> : <span class="hljs-string">"campo extra | otra info | 78"</span>,
+    <span class="hljs-string">"peso_kg"</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">"alto_cm"</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">"ancho_cm"</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">"profundidad_cm"</span> : <span class="hljs-number">0</span>
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-producto-patch" class="action patch"><h4 class="action-heading"><div class="name">Guardar producto</div><a href="#producto-y-asociados-producto-patch" class="method patch">PATCH</a><code class="uri">/producto/{id_producto}/</code></h4><p>Modifica valores del producto.
+Todos los campos de producto son opcionales.
+Si nombre, descripcion, descripcion_extensa o etiquetas se modifican, el producto vuelve a estar pendiente de moderacion.</p>
+<p>Ver <a href="#producto-y-asociados-producto-post">Crear producto</a> para campos de producto.</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_producto</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/<span class="hljs-attribute" title="id_producto">id_producto</span>/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">204</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"No encontrado."</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div class="tab"><div><div class="inner"><div class="description text-muted">This response has no content.</div><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-producto-delete" class="action delete"><h4 class="action-heading"><div class="name">Eliminar producto</div><a href="#producto-y-asociados-producto-delete" class="method delete">DELETE</a><code class="uri">/producto/{id_producto}/</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_producto</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="producto-y-asociados-imagen-de-producto" class="resource"><h3 class="resource-heading">Imagen de Producto <a href="#producto-y-asociados-imagen-de-producto" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/imagen_producto/<span class="hljs-attribute" title="id_imagen">id_imagen</span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>: {id_imagen},
+    <span class="hljs-string">"imagen"</span>: <span class="hljs-string">"https://abi.com.py/media/fab/18ab72ac95b24e0a9f59fda6f0b7a274.jpg"</span>,
+    <span class="hljs-string">"producto"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">"portada"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"resoluciones"</span>: [
+        <span class="hljs-string">"thumbnail"</span>: <span class="hljs-string">"https://abi.com.py/media/thumbs/fab/18ab72ac95b24e0a9f59fda6f0b7a274.jpg"</span>,
+        <span class="hljs-string">"medium"</span>: <span class="hljs-string">"https://abi.com.py/media/thumbs/fab/28ab72ac95b24e0a9f59fda6f0b7a275.jpg"</span>,
+        <span class="hljs-string">"fullres"</span>: <span class="hljs-string">"https://abi.com.py/media/thumbs/fab/38ab72ac95b24e0a9f59fda6f0b7a276.jpg"</span>
+    ]
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-imagen-de-producto-get" class="action get"><h4 class="action-heading"><div class="name">Detalles de imagen</div><a href="#producto-y-asociados-imagen-de-producto-get" class="method get">GET</a><code class="uri">/imagen_producto/{id_imagen}</code></h4><p>Retorna los detalles de la imagen especificada.</p>
+<p>Campos:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de imagen</td>
+</tr>
+<tr>
+<td>imagen</td>
+<td>string</td>
+<td>url de la imagen</td>
+</tr>
+<tr>
+<td>producto</td>
+<td>integer</td>
+<td>id del producto al que pertenece la imagen</td>
+</tr>
+<tr>
+<td>portada</td>
+<td>boolean</td>
+<td>determina si la imagen es la principal, la elegida como portada del producto</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_imagen</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/imagen_producto/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><div class="description"><p>Usando formData, hacer un upload al endpoint, campos:</p>
+<ul>
+<li>
+<p>“imagen”  : el archivo</p>
+</li>
+<li>
+<p>“producto”  : id_producto del producto al que agregar la imagen</p>
+</li>
+</ul>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">multipart/form-data; boundary={boundary value}</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>--{boundary value}
+Content-Disposition: form-data; name=<span class="hljs-string">'imagen'</span>; filename=<span class="hljs-string">'foto.jpg'</span>
+Content-Type: image/jpeg (according to the type <span class="hljs-keyword">of</span> the uploaded file)
+
+{file content}
+--{boundary value}
+Content-Disposition: form-data; name=<span class="hljs-string">"producto"</span>
+
+<span class="hljs-number">2</span>
+--{boundary value}--</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">81</span></span>,
+  "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/18ab72ac95b24e0a9f59fda6f0b7a274.jpg"</span></span>,
+  "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+  "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-imagen-de-producto-post" class="action post"><h4 class="action-heading"><div class="name">Subir imagen</div><a href="#producto-y-asociados-imagen-de-producto-post" class="method post">POST</a><code class="uri">/imagen_producto/</code></h4><p>Permite agregar imagenes al producto.</p>
+<p>Una vez que se sube una imagen, el producto pasa a estado pendiente y debe ser moderado por el staff de ABi.</p>
+<p>Es un request multipart, de subida de archivos [ver request].</p>
+<p>Los campos aceptados son:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>producto</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>imagen</td>
+<td>archivo/binario</td>
+<td>si</td>
+<td>-</td>
+<td>imagen a subir</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method patch">PATCH</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/imagen_producto/<span class="hljs-attribute" title="id_imagen">id_imagen</span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><div class="description"><p>Usando formData, hacer un upload al endpoint, campos:</p>
+<ul>
+<li>
+<p>“imagen”  : el archivo ( opcional )</p>
+</li>
+<li>
+<p>“producto”  : id_producto del producto al que agregar la imagen ( opcional )</p>
+</li>
+</ul>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">multipart/form-data; boundary={boundary value}</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>--{boundary value}
+Content-Disposition: form-data; name=<span class="hljs-string">'imagen'</span>; filename=<span class="hljs-string">'foto.jpg'</span>
+Content-Type: image/jpeg (according to the type <span class="hljs-keyword">of</span> the uploaded file)
+
+{file content}
+--{boundary value}
+Content-Disposition: form-data; name=<span class="hljs-string">"producto"</span>
+
+<span class="hljs-number">2</span>
+--{boundary value}--</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">81</span></span>,
+  "<span class="hljs-attribute">imagen</span>": <span class="hljs-value"><span class="hljs-string">"https://abi.com.py/media/fab/18ab72ac95b24e0a9f59fda6f0b7a274.jpg"</span></span>,
+  "<span class="hljs-attribute">producto</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+  "<span class="hljs-attribute">portada</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-imagen-de-producto-patch" class="action patch"><h4 class="action-heading"><div class="name">Guardar imagen</div><a href="#producto-y-asociados-imagen-de-producto-patch" class="method patch">PATCH</a><code class="uri">/imagen_producto/{id_imagen}</code></h4><p>Permite reemplazar una imagen de producto.</p>
+<p>Una vez que se sube una imagen, el producto pasa a estado pendiente y debe ser moderado por el staff de ABi.</p>
+<p>Es un request multipart, de subida de archivos [ver request].</p>
+<p>Los campos aceptados son:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>producto</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>imagen</td>
+<td>archivo/binario</td>
+<td>si</td>
+<td>-</td>
+<td>imagen a subir</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_imagen</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/imagen_producto/<span class="hljs-attribute" title="id_imagen">id_imagen</span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">204</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-imagen-de-producto-delete" class="action delete"><h4 class="action-heading"><div class="name">Eliminar imagen</div><a href="#producto-y-asociados-imagen-de-producto-delete" class="method delete">DELETE</a><code class="uri">/imagen_producto/{id_imagen}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_imagen</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="producto-y-asociados-seleccionar-imagen-de-portada-de-producto" class="resource"><h3 class="resource-heading">Seleccionar imagen de portada de Producto <a href="#producto-y-asociados-seleccionar-imagen-de-portada-de-producto" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/productos-imagen-portada/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">imagen_id</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-seleccionar-imagen-de-portada-de-producto-post" class="action post"><h4 class="action-heading"><div class="name">Poner imagen como portada</div><a href="#producto-y-asociados-seleccionar-imagen-de-portada-de-producto-post" class="method post">POST</a><code class="uri">/productos-imagen-portada/</code></h4><p>Selecciona la imagen especificada como portada del producto.</p>
+<p>Si el producto tiene una sola imagen, no es necesario marcarla como portada.</p>
+</div></div><hr class="split"><div class="middle"><div id="producto-y-asociados-precio-de-productos" class="resource"><h3 class="resource-heading">Precio de Productos <a href="#producto-y-asociados-precio-de-productos" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/precios/?<span class="hljs-attribute">ids=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">998</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">999</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-precio-de-productos-get" class="action get"><h4 class="action-heading"><div class="name">Listar precios</div><a href="#producto-y-asociados-precio-de-productos-get" class="method get">GET</a><code class="uri">/producto/precios/{?ids}</code></h4><p>Retorna los precios de los productos especificados en la url.</p>
+<p>Retorna una lista de objetos.</p>
+<p>Los campos de cada objeto son:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>precio</td>
+<td>float</td>
+<td>precio normal del producto</td>
+</tr>
+<tr>
+<td>precio_mayorista</td>
+<td>float</td>
+<td>precio mejorado del producto.</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>ids</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<p><strong>Identificadores de producto</strong>. Lista en formado json de ids de producto a incluir en la lista de precios. Si un producto no existe o no pertenece al fabricante, no se incluye. <em>Ejemplo: [14,18,6]</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/precios/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span><span class="tab-button">example 2</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">123</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">123</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+    "<span class="hljs-attribute">precio</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">precio_mayorista</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">non_field_errors</span>": <span class="hljs-value"><span class="hljs-string">"Algunos productos no pertenecen al proveedor o no existen"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-precio-de-productos-post" class="action post"><h4 class="action-heading"><div class="name">Actualizar precios</div><a href="#producto-y-asociados-precio-de-productos-post" class="method post">POST</a><code class="uri">/producto/precios/</code></h4><p>Permite actualizar los precios de varios productos en una sola operacion.</p>
+<p>Espera una lista de objetos, cada objeto tiene los siguientes campos:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>precio</td>
+<td>integer</td>
+<td>no</td>
+<td>valor anterior</td>
+<td>precio normal del producto. si no se envia, no se cambia.</td>
+</tr>
+<tr>
+<td>precio_mayorista</td>
+<td>integer</td>
+<td>no</td>
+<td>valor anterior</td>
+<td>precio mejorado del producto. si no se envia, no se cambia.</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><div id="producto-y-asociados-disponibilidad-de-productos-stock" class="resource"><h3 class="resource-heading">Disponibilidad de Productos - Stock <a href="#producto-y-asociados-disponibilidad-de-productos-stock" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/disponibilidades/?<span class="hljs-attribute">ids=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">599</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-disponibilidad-de-productos-stock-get" class="action get"><h4 class="action-heading"><div class="name">Listar disponibilidad</div><a href="#producto-y-asociados-disponibilidad-de-productos-stock-get" class="method get">GET</a><code class="uri">/producto/disponibilidades/{?ids}</code></h4><p>Retorna el stock disponible para la venta de los productos especificados en la url.</p>
+<p>Retorna una lista de objetos.</p>
+<p>Los campos de cada objeto son:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>cantidad_disponible</td>
+<td>float</td>
+<td>cantidad de producto disponible para la venta</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>ids</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<p><strong>Identificadores de producto</strong>. Lista en formado json de ids de producto a incluir en la lista de disponibilidades. Si un producto no existe o no pertenece al fabricante, no se incluye. <em>Ejemplo: [14,18,6]</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/producto/disponibilidades/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span><span class="tab-button">example 2</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">123</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">123</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+    "<span class="hljs-attribute">cantidad_disponible</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">non_field_errors</span>": <span class="hljs-value"><span class="hljs-string">"Algunos productos no pertenecen al proveedor o no existen"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-disponibilidad-de-productos-stock-post" class="action post"><h4 class="action-heading"><div class="name">Actualizar disponibilidad</div><a href="#producto-y-asociados-disponibilidad-de-productos-stock-post" class="method post">POST</a><code class="uri">/producto/disponibilidades/</code></h4><p>Permite actualizar el stock disponible para la venta de varios productos en una sola operacion.</p>
+<p>Espera una lista de objetos, cada objeto tiene los siguientes campos:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>cantidad_disponible</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>nueva cantidad de producto disponible para la venta.</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><div id="producto-y-asociados-categorias-de-producto" class="resource"><h3 class="resource-heading">Categorias de producto <a href="#producto-y-asociados-categorias-de-producto" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/categoria/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Alimentos"</span></span>,
+    "<span class="hljs-attribute">superior</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Carnes"</span></span>,
+    "<span class="hljs-attribute">superior</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Cerdo"</span></span>,
+    "<span class="hljs-attribute">superior</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Muebles"</span></span>,
+    "<span class="hljs-attribute">superior</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Pescados"</span></span>,
+    "<span class="hljs-attribute">superior</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Verduras"</span></span>,
+    "<span class="hljs-attribute">superior</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+  </span>}
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="producto-y-asociados-categorias-de-producto-get" class="action get"><h4 class="action-heading"><div class="name">Listar categorias de producto</div><a href="#producto-y-asociados-categorias-de-producto-get" class="method get">GET</a><code class="uri">/categoria/</code></h4><p>Retorna las categorias de producto.</p>
+<p>Retorna una lista de objetos.</p>
+<p>Las categorias pueden estar anidadas, y forman un arbol.</p>
+<p>Los campos de cada objeto son:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la categoria</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre de la categoria</td>
+</tr>
+<tr>
+<td>superior</td>
+<td>integer</td>
+<td>id de la categoria padre</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><section id="manejo-de-ordenes" class="resource-group"><h2 class="group-heading">Manejo de Ordenes <a href="#manejo-de-ordenes" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="manejo-de-ordenes-punto-de-retiro" class="resource"><h3 class="resource-heading">Punto de retiro <a href="#manejo-de-ordenes-punto-de-retiro" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/punto-retiro/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Casa particular"</span></span>,
+  "<span class="hljs-attribute">calle_principal</span>": <span class="hljs-value"><span class="hljs-string">"Artigas"</span></span>,
+  "<span class="hljs-attribute">calle_secundaria</span>": <span class="hljs-value"><span class="hljs-string">"España"</span></span>,
+  "<span class="hljs-attribute">numero</span>": <span class="hljs-value"><span class="hljs-string">"2048"</span></span>,
+  "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"adsasd"</span></span>,
+  "<span class="hljs-attribute">ubicacion</span>": <span class="hljs-value"><span class="hljs-string">"-45.314545907447055,-17.61473816451526"</span></span>,
+  "<span class="hljs-attribute">ciudad</span>": <span class="hljs-value"><span class="hljs-number">11</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+  "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+  "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Casa particular"</span></span>,
+  "<span class="hljs-attribute">calle_principal</span>": <span class="hljs-value"><span class="hljs-string">"Artigas"</span></span>,
+  "<span class="hljs-attribute">calle_secundaria</span>": <span class="hljs-value"><span class="hljs-string">"España"</span></span>,
+  "<span class="hljs-attribute">numero</span>": <span class="hljs-value"><span class="hljs-string">"2048"</span></span>,
+  "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"adsasd"</span></span>,
+  "<span class="hljs-attribute">ubicacion</span>": <span class="hljs-value"><span class="hljs-string">"-45.314545907447055,-17.61473816451526"</span></span>,
+  "<span class="hljs-attribute">ciudad</span>": <span class="hljs-value"><span class="hljs-number">11</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-punto-de-retiro-post" class="action post"><h4 class="action-heading"><div class="name">Crear punto de retiro</div><a href="#manejo-de-ordenes-punto-de-retiro-post" class="method post">POST</a><code class="uri">/punto-retiro/</code></h4><p>Crea un punto de retiro nuevo.</p>
+<p>Campos:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>nombre del punto de retiro</td>
+</tr>
+<tr>
+<td>calle_principal</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>calle principal del negocio</td>
+</tr>
+<tr>
+<td>calle_secundaria</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>calle secundaria del negocio</td>
+</tr>
+<tr>
+<td>numero</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>numero de calle del negocio</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>detalles extras de la direccion</td>
+</tr>
+<tr>
+<td>ubicacion</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>cadena de ubicacion, en el formato “lat[float], long[float]”</td>
+</tr>
+<tr>
+<td>ciudad</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id de la ciudad del punto</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/punto-retiro/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
+    {
+        <span class="hljs-string">"id"</span>: <span class="hljs-number">9</span>,
+        <span class="hljs-string">"fabricante"</span>: {id_fabricante},
+        <span class="hljs-string">"nombre"</span>: <span class="hljs-string">"Casa particular"</span>,
+        <span class="hljs-string">"calle_principal"</span>: <span class="hljs-string">"Artigas"</span>,
+        <span class="hljs-string">"calle_secundaria"</span>: <span class="hljs-string">"España"</span>,
+        <span class="hljs-string">"numero"</span>: <span class="hljs-string">"2048"</span>,
+        <span class="hljs-string">"referencia"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-string">"ubicacion"</span>: <span class="hljs-string">"-45.314545907447055,-17.61473816451526"</span>,
+        <span class="hljs-string">"ciudad"</span>: <span class="hljs-number">11</span>
+    }
+]</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-punto-de-retiro-get" class="action get"><h4 class="action-heading"><div class="name">Listar puntos de retiro</div><a href="#manejo-de-ordenes-punto-de-retiro-get" class="method get">GET</a><code class="uri">/punto-retiro/</code></h4><p>Lista los puntos de retiro del fabricante.</p>
+<p>Retorna una lista de puntos.</p>
+<p>Ver <a href="#manejo-de-ordenes-punto-de-retiro-post">Crear punto de retiro</a> para campos de cada objeto de la lista.</p>
+</div></div><hr class="split"><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/punto-retiro/<span class="hljs-attribute" title="id_punto">id_punto</span>/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>: {id_punto},
+    <span class="hljs-string">"fabricante"</span>: {id_fabricante},
+    <span class="hljs-string">"nombre"</span>: <span class="hljs-string">"Casa particular"</span>,
+    <span class="hljs-string">"calle_principal"</span>: <span class="hljs-string">"Artigas"</span>,
+    <span class="hljs-string">"calle_secundaria"</span>: <span class="hljs-string">"España"</span>,
+    <span class="hljs-string">"numero"</span>: <span class="hljs-string">"2048"</span>,
+    <span class="hljs-string">"referencia"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"ubicacion"</span>: <span class="hljs-string">"-45.314545907447055,-17.61473816451526"</span>,
+    <span class="hljs-string">"ciudad"</span>: <span class="hljs-number">11</span>
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-punto-de-retiro-get-1" class="action get"><h4 class="action-heading"><div class="name">Ver detalles del punto de retiro</div><a href="#manejo-de-ordenes-punto-de-retiro-get-1" class="method get">GET</a><code class="uri">/punto-retiro/{id_punto}/</code></h4><p>Retorna los detalles del punto de retiro especificado.</p>
+<p>Ver <a href="#manejo-de-ordenes-punto-de-retiro-post">Crear punto de retiro</a> para campos del punto.</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_punto</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method patch">PATCH</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/punto-retiro/<span class="hljs-attribute" title="id_punto">id_punto</span>/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Sucursal 3r"</span></span>,
+  "<span class="hljs-attribute">calle_principal</span>": <span class="hljs-value"><span class="hljs-string">"Calle 1"</span></span>,
+  "<span class="hljs-attribute">calle_secundaria</span>": <span class="hljs-value"><span class="hljs-string">"Calle 2"</span></span>,
+  "<span class="hljs-attribute">numero</span>": <span class="hljs-value"><span class="hljs-string">"123"</span></span>,
+  "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"a"</span></span>,
+  "<span class="hljs-attribute">ubicacion</span>": <span class="hljs-value"><span class="hljs-string">"-25.23165284078297,-57.48939514160157"</span></span>,
+  "<span class="hljs-attribute">ciudad</span>": <span class="hljs-value"><span class="hljs-number">12</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>: {id_punto},
+    <span class="hljs-string">"fabricante"</span>: {id_fabricante},
+    <span class="hljs-string">"nombre"</span>: <span class="hljs-string">"Sucursal 3r"</span>,
+    <span class="hljs-string">"calle_principal"</span>: <span class="hljs-string">"Calle 1"</span>,
+    <span class="hljs-string">"calle_secundaria"</span>: <span class="hljs-string">"Calle 2"</span>,
+    <span class="hljs-string">"numero"</span>: <span class="hljs-string">"123"</span>,
+    <span class="hljs-string">"referencia"</span>: <span class="hljs-string">"a"</span>,
+    <span class="hljs-string">"ubicacion"</span>: <span class="hljs-string">"-25.231652840782978,-57.48939514160157"</span>,
+    <span class="hljs-string">"ciudad"</span>: <span class="hljs-number">12</span>
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-punto-de-retiro-patch" class="action patch"><h4 class="action-heading"><div class="name">Guardar punto de retiro</div><a href="#manejo-de-ordenes-punto-de-retiro-patch" class="method patch">PATCH</a><code class="uri">/punto-retiro/{id_punto}/</code></h4><p>Permite actualizar un punto existente.</p>
+<p>Todos los  campos son opcionales.</p>
+<p>Ver <a href="#manejo-de-ordenes-punto-de-retiro-post">Crear punto de retiro</a> para campos del punto.</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_punto</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="right"><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/punto-retiro/<span class="hljs-attribute" title="id_punto">id_punto</span>/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">204</span></div><div class="tab"><div><div class="inner"><div class="description text-muted">This response has no content.</div><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-punto-de-retiro-delete" class="action delete"><h4 class="action-heading"><div class="name">Eliminar punto de retiro</div><a href="#manejo-de-ordenes-punto-de-retiro-delete" class="method delete">DELETE</a><code class="uri">/punto-retiro/{id_punto}/</code></h4><p>Elimina un punto de retiro.</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_punto</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="manejo-de-ordenes-ordenes-de-venta" class="resource"><h3 class="resource-heading">Ordenes de venta <a href="#manejo-de-ordenes-ordenes-de-venta" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/orden_venta/?<span class="hljs-attribute">page=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">page_size=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+  "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">previous</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+      "<span class="hljs-attribute">fecha</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-10T14:46:32.017176-03:00"</span></span>,
+      "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"160503027"</span></span>,
+      "<span class="hljs-attribute">precio_mejorado</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">estado</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">fecha_confirmado</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">fecha_retiro</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">monto</span>": <span class="hljs-value"><span class="hljs-number">600000</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">fecha</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-10T10:01:44.221080-03:00"</span></span>,
+      "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">precio_mejorado</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">estado</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">fecha_confirmado</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">fecha_retiro</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">monto</span>": <span class="hljs-value"><span class="hljs-number">9448000</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-ordenes-de-venta-get" class="action get"><h4 class="action-heading"><div class="name">Listar ordenes</div><a href="#manejo-de-ordenes-ordenes-de-venta-get" class="method get">GET</a><code class="uri">/orden_venta/{?page,page_size}</code></h4><p>Retorna la lista de ordenes de venta del fabricante, junto con los detalles de paginacion.</p>
+<p><strong>Campos de cada objeto:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la ciudad</td>
+</tr>
+<tr>
+<td>fecha</td>
+<td>string</td>
+<td>fecha en formato ISO en la cual la orden se creó</td>
+</tr>
+<tr>
+<td>fecha_confirmado</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual la orden se confirmó</td>
+</tr>
+<tr>
+<td>fecha_retiro</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual la orden se retiró del fabricante</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>string</td>
+<td>numero de referencia de la orden</td>
+</tr>
+<tr>
+<td>precio_mejorado</td>
+<td>boolean</td>
+<td>es orden con precio mejorado</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>integer</td>
+<td>estado de la orden (0 -&gt; creado, 10 -&gt; confirmado, 20 -&gt; finalizado)</td>
+</tr>
+<tr>
+<td>monto</td>
+<td>float</td>
+<td>valor de la orden de venta</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Numero de pagina</strong>. <em>Por defecto: 1</em>.</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Tamaño de pagina</strong>. <em>Por defecto: 10</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="manejo-de-ordenes-orden-de-venta" class="resource"><h3 class="resource-heading">Orden de venta <a href="#manejo-de-ordenes-orden-de-venta" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/orden_venta/<span class="hljs-attribute" title="id_orden">id_orden</span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"160503027"</span></span>,
+
+    "<span class="hljs-attribute">fecha</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-10T14:46:32.017176-03:00"</span></span>,
+    "<span class="hljs-attribute">fecha_confirmado</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">fecha_retiro</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">fecha_retiro_real</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+
+    "<span class="hljs-attribute">precio_mejorado</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">estado</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">fabricante</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+    "<span class="hljs-attribute">punto_retiro</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">tipo_vehiculo</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+
+    "<span class="hljs-attribute">transportista</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+    "<span class="hljs-attribute">vehiculo</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+
+    "<span class="hljs-attribute">contrasena</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+
+    "<span class="hljs-attribute">pedido</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">31</span></span>,
+            "<span class="hljs-attribute">fecha</span>": <span class="hljs-value"><span class="hljs-string">"2020-11-10T14:43:59.570620-03:00"</span></span>,
+            "<span class="hljs-attribute">fecha_aceptado</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+            "<span class="hljs-attribute">fecha_entrega</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+            "<span class="hljs-attribute">referencia</span>": <span class="hljs-value"><span class="hljs-string">"160503053"</span></span>,
+            "<span class="hljs-attribute">estado</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+            "<span class="hljs-attribute">precio_mejorado</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">productos</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                    "<span class="hljs-attribute">nombre</span>": <span class="hljs-value"><span class="hljs-string">"Nebulizador Aspen NU320"</span></span>,
+                    "<span class="hljs-attribute">imagen_portada</span>": <span class="hljs-value"><span class="hljs-string">"http://127.0.0.1:8000/media/fab/34dc47ba7d674bb2b4b233164dab3515.jpg"</span></span>,
+                    "<span class="hljs-attribute">cantidad</span>": <span class="hljs-value"><span class="hljs-number">1.0</span></span>,
+                }
+            ]
+
+    </span>}
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-orden-de-venta-get" class="action get"><h4 class="action-heading"><div class="name">Ver detalles de orden de venta</div><a href="#manejo-de-ordenes-orden-de-venta-get" class="method get">GET</a><code class="uri">/orden_venta/{id_orden}</code></h4><p>Retorna los detalles de la orden especificada, con mas detalles que el listado.</p>
+<p><strong>Campos de cada objeto:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la orden</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>string</td>
+<td>numero de referencia de la orden</td>
+</tr>
+<tr>
+<td>fecha</td>
+<td>string</td>
+<td>fecha en formato ISO en la cual la orden se creó</td>
+</tr>
+<tr>
+<td>fecha_confirmado</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual la orden se confirmó</td>
+</tr>
+<tr>
+<td>fecha_retiro</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual la orden se puede retirar del fabricante</td>
+</tr>
+<tr>
+<td>fecha_retiro_real</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual la orden se retiró del fabricante</td>
+</tr>
+<tr>
+<td>precio_mejorado</td>
+<td>boolean</td>
+<td>es orden con precio mejorado</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>integer</td>
+<td>estado de la orden (0 -&gt; creado, 10 -&gt; confirmado, 20 -&gt; finalizado)</td>
+</tr>
+<tr>
+<td>fabricante</td>
+<td>integer</td>
+<td>id del fabricante</td>
+</tr>
+<tr>
+<td>monto</td>
+<td>float</td>
+<td>valor de la orden de venta</td>
+</tr>
+<tr>
+<td>punto_retiro</td>
+<td>object/null</td>
+<td>punto de retiro para la orden, ver <a href="#manejo-de-ordenes-punto-de-retiro-post">Crear punto de retiro</a> para los campos</td>
+</tr>
+<tr>
+<td>tipo_vehiculo</td>
+<td>object/null</td>
+<td>tipo de vehiculo definido para la orden, ver <a href="#informacion-general-tipos-de-vehiculo-get">Tipos de vehiculo</a> para los campos</td>
+</tr>
+<tr>
+<td>transportista</td>
+<td>object/null</td>
+<td>transportista asignado para el retiro y entrega del pedido, ver mas abajo los campos</td>
+</tr>
+<tr>
+<td>vehiculo</td>
+<td>object/null</td>
+<td>vehiculo asignado para el retiro y entrega del pedido, ver mas abajo los campos</td>
+</tr>
+<tr>
+<td>contrasena</td>
+<td>string/null</td>
+<td>contraseña que debe dar el fabricante al transportista al retirar la orden</td>
+</tr>
+<tr>
+<td>pedido</td>
+<td>object</td>
+<td>pedido que corresponde a la orden, ver mas abajo los campos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos del transportista dentro de la orden:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de transportista</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre del transportista</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos del vehiculo dentro de la orden:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de vehiculo</td>
+</tr>
+<tr>
+<td>marca</td>
+<td>string</td>
+<td>marca del vehiculo</td>
+</tr>
+<tr>
+<td>modelo</td>
+<td>string</td>
+<td>modelo del vehiculo</td>
+</tr>
+<tr>
+<td>color</td>
+<td>string</td>
+<td>color del vehiculo</td>
+</tr>
+<tr>
+<td>chapa</td>
+<td>string</td>
+<td>chapa del vehiculo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos de cada pedido:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del pedido</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>string</td>
+<td>numero de referencia del pedido</td>
+</tr>
+<tr>
+<td>fecha</td>
+<td>string</td>
+<td>fecha en formato ISO en la cual la orden se creó</td>
+</tr>
+<tr>
+<td>fecha_aceptado</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual el pedido se aceptó</td>
+</tr>
+<tr>
+<td>fecha_entrega</td>
+<td>string/null</td>
+<td>fecha en formato ISO en la cual el pedido se entregó</td>
+</tr>
+<tr>
+<td>precio_mejorado</td>
+<td>boolean</td>
+<td>es pedido con precio mejorado</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>integer</td>
+<td>estado de la orden (0 -&gt; creado, 10 -&gt; pagado, 20 -&gt; en proceso, 30 -&gt; enviado, 40 -&gt; entregado)</td>
+</tr>
+<tr>
+<td>productos</td>
+<td>array[producto]</td>
+<td>lista de productos del pedido, ver mas abajo los campos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos de cada producto dentro del pedido:</strong></p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id del producto</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>nombre del producto</td>
+</tr>
+<tr>
+<td>imagen_portada</td>
+<td>string</td>
+<td>url de la imagen de portada del producto</td>
+</tr>
+<tr>
+<td>cantidad</td>
+<td>float</td>
+<td>cantidad del producto en el pedido</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id_orden</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="manejo-de-ordenes-aprobar-orden-de-venta" class="resource"><h3 class="resource-heading">Aprobar Orden de venta <a href="#manejo-de-ordenes-aprobar-orden-de-venta" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/orden_venta/aprobar/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span><span class="tab-button">example 2</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">orden_venta_id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+  "<span class="hljs-attribute">punto_retiro_id</span>": <span class="hljs-value"><span class="hljs-number">35</span></span>,
+  "<span class="hljs-attribute">fecha_retiro</span>": <span class="hljs-value"><span class="hljs-string">"2021-10-05 15:00Z-4"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><div class="description text-muted">This response has no content.</div><div style="height: 1px;"></div></div></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">orden_venta_id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+  "<span class="hljs-attribute">punto_retiro_id</span>": <span class="hljs-value"><span class="hljs-number">35</span></span>,
+  "<span class="hljs-attribute">fecha_retiro</span>": <span class="hljs-value"><span class="hljs-string">"2021-10-05 15:00Z-4"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">non_field_errors</span>": <span class="hljs-value">[
+    <span class="hljs-string">"Orden de venta no esta en estado de ser aprobada"</span>
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="manejo-de-ordenes-aprobar-orden-de-venta-post" class="action post"><h4 class="action-heading"><div class="name">Aprobar orden</div><a href="#manejo-de-ordenes-aprobar-orden-de-venta-post" class="method post">POST</a><code class="uri">/orden_venta/aprobar/</code></h4><p>Aprueba una orden de venta pendiente.</p>
+<p>Esta operacion dispara el retiro del pedido por parte del transportista.</p>
+<p>Campos:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>requerido</th>
+<th>por defecto</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orden_venta_id</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id de la orden a aprobar</td>
+</tr>
+<tr>
+<td>punto_retiro_id</td>
+<td>integer</td>
+<td>si</td>
+<td>-</td>
+<td>id del punto de donde se buscará la orden</td>
+</tr>
+<tr>
+<td>fecha_retiro</td>
+<td>string</td>
+<td>si</td>
+<td>-</td>
+<td>fecha en formato ISO desde la cual se puede buscar el pedido</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><section id="informacion-financiera" class="resource-group"><h2 class="group-heading">Informacion financiera <a href="#informacion-financiera" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="informacion-financiera-balance" class="resource"><h3 class="resource-heading">Balance <a href="#informacion-financiera-balance" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/balance/?<span class="hljs-attribute">page=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">page_size=</span><span class="hljs-literal"></span></span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+  "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">previous</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">78</span></span>,
+      "<span class="hljs-attribute">fecha</span>": <span class="hljs-value"><span class="hljs-string">"2021-01-19T13:42:40.499849-03:00"</span></span>,
+      "<span class="hljs-attribute">descripcion</span>": <span class="hljs-value"><span class="hljs-string">"046029527"</span></span>,
+      "<span class="hljs-attribute">monto</span>": <span class="hljs-value"><span class="hljs-number">16500</span></span>,
+      "<span class="hljs-attribute">saldo</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">estado</span>": <span class="hljs-value"><span class="hljs-number">20</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="informacion-financiera-balance-get" class="action get"><h4 class="action-heading"><div class="name">Listar detalle de balance</div><a href="#informacion-financiera-balance-get" class="method get">GET</a><code class="uri">/balance/{?page,page_size}</code></h4><p>Retorna la lista de ordenes de venta, con sus diferentes estados (no facturada, facturada, cobrada) del fabricante, junto con los detalles de paginacion.</p>
+<p>Campos de cada objeto:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>id de la orden</td>
+</tr>
+<tr>
+<td>fecha</td>
+<td>string</td>
+<td>fecha en formato ISO en la cual la orden se creó</td>
+</tr>
+<tr>
+<td>descripcion</td>
+<td>string</td>
+<td>descripcion de la orden, es la referencia del pedido</td>
+</tr>
+<tr>
+<td>monto</td>
+<td>integer</td>
+<td>monto total de la orden</td>
+</tr>
+<tr>
+<td>saldo</td>
+<td>boolean</td>
+<td>monto pendiente de cobro</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>integer</td>
+<td>estado de la orden (0 -&gt; no facturada, 10 -&gt; facturada, 20 -&gt; cobrada)</td>
+</tr>
+</tbody>
+</table>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Numero de pagina</strong>. <em>Por defecto: 1</em>.</p>
+</dd><dt>page_size</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<p><strong>Tamaño de pagina</strong>. <em>Por defecto: 10</em>.</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="informacion-financiera-resumen-de-balance" class="resource"><h3 class="resource-heading">Resumen de Balance <a href="#informacion-financiera-resumen-de-balance" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/balance/resumen/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">facturado</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+  "<span class="hljs-attribute">pendiente_facturacion</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+  "<span class="hljs-attribute">cobrado</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="informacion-financiera-resumen-de-balance-get" class="action get"><h4 class="action-heading"><div class="name">Ver Resumen de Balance</div><a href="#informacion-financiera-resumen-de-balance-get" class="method get">GET</a><code class="uri">/balance/resumen/</code></h4><p>Retorna el resumen del anterior balance, donde se suman todas las operaciones del fabricante.</p>
+<p>Campos de cada objeto:</p>
+<table>
+<thead>
+<tr>
+<th>campo</th>
+<th>tipo</th>
+<th>descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pendiente_facturacion</td>
+<td>integer</td>
+<td>monto total a facturar</td>
+</tr>
+<tr>
+<td>facturado</td>
+<td>integer</td>
+<td>monto total facturado y pendiente de cobro</td>
+</tr>
+<tr>
+<td>cobrado</td>
+<td>integer</td>
+<td>monto total cobrado</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><section id="señales-al-fabricante" class="resource-group"><h2 class="group-heading">Señales al fabricante <a href="#señales-al-fabricante" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="señales-al-fabricante-notificacion-orden-de-venta-nueva" class="resource"><h3 class="resource-heading">Notificacion Orden de venta Nueva <a href="#señales-al-fabricante-notificacion-orden-de-venta-nueva" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://abi.com.py/api/v1/fab</span>/endpoint_definido_por_fabricante</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><div class="description"><ul>
+<li>
+<p>El fabricante define la url a la cual desee que se envie el request.</p>
+</li>
+<li>
+<p>En el header del request se envia el token de fabricante.</p>
+</li>
+<li>
+<p>Se recomienda verificar el token, para proteger el endpoint contra notificaciones falsas.</p>
+</li>
+</ul>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Token &lt;access token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>: <span class="hljs-number">6</span>,
+    <span class="hljs-string">"referencia"</span>: <span class="hljs-string">"160503027"</span>,
+
+    <span class="hljs-string">"fecha"</span>: <span class="hljs-string">"2020-11-10T14:46:32.017176-03:00"</span>,
+    <span class="hljs-string">"fecha_confirmado"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">"fecha_retiro"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">"fecha_retiro_real"</span>: <span class="hljs-literal">null</span>,
+
+    <span class="hljs-string">"precio_mejorado"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"estado"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">"fabricante"</span>: {id_fabricante},
+    <span class="hljs-string">"punto_retiro"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">"tipo_vehiculo"</span>: <span class="hljs-literal">null</span>,
+
+    <span class="hljs-string">"transportista"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">"vehiculo"</span>: <span class="hljs-literal">null</span>,
+
+    <span class="hljs-string">"contrasena"</span>: <span class="hljs-literal">null</span>,
+
+    <span class="hljs-string">"pedido"</span>: {
+            <span class="hljs-string">"id"</span>: <span class="hljs-number">31</span>,
+            <span class="hljs-string">"fecha"</span>: <span class="hljs-string">"2020-11-10T14:43:59.570620-03:00"</span>,
+            <span class="hljs-string">"fecha_aceptado"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-string">"fecha_entrega"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-string">"referencia"</span>: <span class="hljs-string">"160503053"</span>,
+            <span class="hljs-string">"estado"</span>: <span class="hljs-number">10</span>,
+            <span class="hljs-string">"precio_mejorado"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-string">"productos"</span>: [
+                {
+                    <span class="hljs-string">"id"</span>: <span class="hljs-number">3</span>,
+                    <span class="hljs-string">"nombre"</span>: <span class="hljs-string">"Nebulizador Aspen NU320"</span>,
+                    <span class="hljs-string">"imagen_portada"</span>: <span class="hljs-string">"http://127.0.0.1:8000/media/fab/34dc47ba7d674bb2b4b233164dab3515.jpg"</span>,
+                    <span class="hljs-string">"cantidad"</span>: <span class="hljs-number">3</span>,
+                    <span class="hljs-string">"api_extra_data"</span> : <span class="hljs-string">"campo extra | info | 56"</span>
+                }
+            ]
+
+    }
+}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><div class="description text-muted">This response has no content.</div><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="señales-al-fabricante-notificacion-orden-de-venta-nueva-post" class="action post"><h4 class="action-heading"><div class="name">Notificar orden nueva</div><a href="#señales-al-fabricante-notificacion-orden-de-venta-nueva-post" class="method post">POST</a><code class="uri">/endpoint_definido_por_fabricante</code></h4><p>El sistema realiza un POST a la url definida por el fabricante, a modo de recibir las nuevas ordenes que vayan llegando.</p>
+<p>En el header del request, se envia el token de acceso de fabricante, se recomienda verificar, para proteger contra intentos de vulnerar el sistema.</p>
+<p>El request contiene la orden de venta nueva.</p>
+<p>Para los campos del objeto, ver <a href="#manejo-de-ordenes-orden-de-venta-get">Ver orden de venta</a></p>
+</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 24 Feb 2022</p></div></div></div></div><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
